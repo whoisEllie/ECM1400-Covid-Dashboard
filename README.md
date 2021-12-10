@@ -55,7 +55,7 @@
 
  ## Developer Documentation
 
- Documentation can be found at the accompanying ReadTheDocs page at https://ecm1400-covid-dashboard.readthedocs.io/en/latest/covid_data_handler.html, or by using the
+ Documentation can be found at the accompanying ReadTheDocs page at https://ecm1400-covid-dashboard.readthedocs.io/en/latest/py-modindex.html, or by using the
  docstrings in the program, which are used to generate the ReadTheDocs page
 
  ## Details
