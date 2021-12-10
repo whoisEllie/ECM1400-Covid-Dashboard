@@ -2,14 +2,13 @@ werkzeug - WARNING -  * Debugger is active!
 werkzeug - INFO -  * Debugger PIN: 951-979-887
 root - INFO - Covid data scheduler was run with blocking=False
 root - INFO - News data scheduler was run with blocking=False
-werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 11:49:37] "GET / HTTP/1.1" 200 -
-werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 11:49:37] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
-werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 11:49:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:19] "GET /index HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:19] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
 root - INFO - Covid data scheduler was run with blocking=False
 root - INFO - News data scheduler was run with blocking=False
-root - INFO - Successfuly parsed ['11', '50'], next call is at: 2021-12-10 11:50:00
-root - INFO - Sucessfully scheduled Covid data asdf at 11:50
-root - INFO - scheduler queue is: [Event(time=1639137000.0, priority=1, action=<function update_data at 0x1042a8ee0>, argument={'11:50': '11:50', 'Covid data asdf': 'Covid data asdf'}, kwargs={})]
+root - INFO - Successfuly parsed ['09', '44'], next call is at: 2021-12-10 09:44:00
+root - INFO - Sucessfully scheduled Covid data asdf at 09:44
+root - INFO - scheduler queue is: [Event(time=1639129440.0, priority=1, action=<function update_data at 0x107125dc0>, argument={'09:44': '09:44', 'Covid data asdf': 'Covid data asdf'}, kwargs={})]
 urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): newsapi.org:443
 urllib3.connectionpool - DEBUG - https://newsapi.org:443 "GET /v2/everything?apiKey=284be0fa43c047d586fd413014cc57c4&language=en&q=Covid+OR+COVID-19+OR+coronavirus&sortBy=relevancy&sources=bbc-news%2Cthe-verge HTTP/1.1" 200 None
 root - INFO - Successfully requested news data from the news API
@@ -34,53 +33,32 @@ root - DEBUG - Successfuly added Covid: France brings in booster requirement for
 root - DEBUG - Successfuly added Covid: Swiss vote on ending restrictions while cases surge to the updates list
 root - DEBUG - Successfuly added Coronavirus: Countries shut borders over new South Africa variant to the updates list
 root - INFO - Successfuly added new articles
-root - INFO - Successfuly parsed ['11', '50'], next call is at: 2021-12-10 11:50:00
-root - INFO - Sucessfully scheduled News data asdf at 11:50
-root - INFO - scheduler queue is: [Event(time=1639137000.0, priority=1, action=<function update_data at 0x10424d5e0>, argument={'11:50': '11:50', 'News data asdf': 'News data asdf'}, kwargs={})]
-werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 11:49:44] "GET /index?alarm=11%3A50&two=asdf&repeat=repeat&covid-data=covid-data&news=news HTTP/1.1" 200 -
-werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 11:49:44] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
-urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.coronavirus.data.gov.uk:443
-urllib3.connectionpool - DEBUG - https://api.coronavirus.data.gov.uk:443 "GET /v1/data?filters=areaType%3Dltla%3BareaName%3DExeter&structure=%7B%22areaCode%22%3A%22areaCode%22%2C%22areaName%22%3A%22areaName%22%2C%22areaType%22%3A%22areaType%22%2C%22date%22%3A%22date%22%2C%22cumDailyNsoDeathsByDeathDate%22%3A%22cumDailyNsoDeathsByDeathDate%22%2C%22hospitalCases%22%3A%22hospitalCases%22%2C%22newCasesBySpecimenDate%22%3A%22newCasesBySpecimenDate%22%7D&format=json&page=1 HTTP/1.1" 200 None
-urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.coronavirus.data.gov.uk:443
-urllib3.connectionpool - DEBUG - https://api.coronavirus.data.gov.uk:443 "GET /v1/data?filters=areaType%3Dltla%3BareaName%3DExeter&structure=%7B%22areaCode%22%3A%22areaCode%22%2C%22areaName%22%3A%22areaName%22%2C%22areaType%22%3A%22areaType%22%2C%22date%22%3A%22date%22%2C%22cumDailyNsoDeathsByDeathDate%22%3A%22cumDailyNsoDeathsByDeathDate%22%2C%22hospitalCases%22%3A%22hospitalCases%22%2C%22newCasesBySpecimenDate%22%3A%22newCasesBySpecimenDate%22%7D&format=json&page=2 HTTP/1.1" 204 0
-root - INFO - Successfully called Covid API for Exeter
-root - INFO - Successfuly reformatted dictionary
-root - INFO - Successfully parsed dictionary to csv
-root - ERROR - IndexError in find_recent_value for value None
-root - INFO - is_integer returned 39
-root - INFO - is_integer returned 95
-root - INFO - is_integer returned 111
-root - INFO - is_integer returned 110
-root - INFO - is_integer returned 125
-root - INFO - is_integer returned 112
-root - INFO - is_integer returned 139
-root - INFO - Sum of most recent values for newCasesBySpecimenDate is 818
-root - ERROR - IndexError in find_recent_value for value None
-root - INFO - Processed cumulative deaths as None, 7 day infections            as 818, and hospital cases as None
-urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.coronavirus.data.gov.uk:443
-urllib3.connectionpool - DEBUG - https://api.coronavirus.data.gov.uk:443 "GET /v1/data?filters=areaType%3Dnation%3BareaName%3DEngland&structure=%7B%22areaCode%22%3A%22areaCode%22%2C%22areaName%22%3A%22areaName%22%2C%22areaType%22%3A%22areaType%22%2C%22date%22%3A%22date%22%2C%22cumDailyNsoDeathsByDeathDate%22%3A%22cumDailyNsoDeathsByDeathDate%22%2C%22hospitalCases%22%3A%22hospitalCases%22%2C%22newCasesBySpecimenDate%22%3A%22newCasesBySpecimenDate%22%7D&format=json&page=1 HTTP/1.1" 200 None
-urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.coronavirus.data.gov.uk:443
-urllib3.connectionpool - DEBUG - https://api.coronavirus.data.gov.uk:443 "GET /v1/data?filters=areaType%3Dnation%3BareaName%3DEngland&structure=%7B%22areaCode%22%3A%22areaCode%22%2C%22areaName%22%3A%22areaName%22%2C%22areaType%22%3A%22areaType%22%2C%22date%22%3A%22date%22%2C%22cumDailyNsoDeathsByDeathDate%22%3A%22cumDailyNsoDeathsByDeathDate%22%2C%22hospitalCases%22%3A%22hospitalCases%22%2C%22newCasesBySpecimenDate%22%3A%22newCasesBySpecimenDate%22%7D&format=json&page=2 HTTP/1.1" 204 0
-root - INFO - Successfully called Covid API for England
-root - INFO - Successfuly reformatted dictionary
-root - INFO - Successfully parsed dictionary to csv
-root - INFO - is_integer returned 146563
-root - INFO - Most recent value for cumDailyNsoDeathsByDeathDate is 146563
-root - INFO - is_integer returned 10154
-root - INFO - is_integer returned 35127
-root - INFO - is_integer returned 45753
-root - INFO - is_integer returned 33513
-root - INFO - is_integer returned 32018
-root - INFO - is_integer returned 37937
-root - INFO - is_integer returned 41793
-root - INFO - Sum of most recent values for newCasesBySpecimenDate is 272025
-root - INFO - is_integer returned 6130
-root - INFO - Most recent value for hospitalCases is 6130
-root - INFO - Processed cumulative deaths as 146563, 7 day infections            as 272025, and hospital cases as 6130
-root - INFO - Successfuly parsed ['11', '50'], next call is at: 2021-12-11 11:50:00
-root - INFO - Sucessfully scheduled Covid data asdf at 11:50
-root - INFO - scheduler queue is: [Event(time=1639223400.0, priority=1, action=<function update_data at 0x1042a8ee0>, argument={'11:50': '11:50', 'Covid data asdf': 'Covid data asdf'}, kwargs={})]
-root - INFO - Scheduled a new covid update
+root - INFO - Successfuly parsed ['09', '44'], next call is at: 2021-12-10 09:44:00
+root - INFO - Sucessfully scheduled News data asdf at 09:44
+root - INFO - scheduler queue is: [Event(time=1639129440.0, priority=1, action=<function update_data at 0x1067e44c0>, argument={'09:44': '09:44', 'News data asdf': 'News data asdf'}, kwargs={})]
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:26] "GET /index?alarm=09%3A44&two=asdf&repeat=repeat&covid-data=covid-data&news=news HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:26] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+root - INFO - Removed Covid update, scheduler queue is: []
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:28] "GET /index?update_item=Covid+data+asdf HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:28] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:29] "GET /index?update_item=Covid+data+asdf HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:29] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:30] "GET /index?update_item=Covid+data+asdf HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:30] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:30] "GET /index?update_item=Covid+data+asdf HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:30] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:30] "GET /index?update_item=Covid+data+asdf HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:43:30] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
 root - INFO - Covid data scheduler was run with blocking=False
 urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): newsapi.org:443
 urllib3.connectionpool - DEBUG - https://newsapi.org:443 "GET /v2/everything?apiKey=284be0fa43c047d586fd413014cc57c4&language=en&q=Covid+OR+COVID-19+OR+coronavirus&sortBy=relevancy&sources=bbc-news%2Cthe-verge HTTP/1.1" 200 None
@@ -88,10 +66,32 @@ root - INFO - Successfully requested news data from the news API
 root - INFO - Successfully processed the result from the news API, but                no new articles found
 root - INFO - Covid data scheduler was run with blocking=False
 root - INFO - News data scheduler was run with blocking=False
-root - INFO - Successfuly parsed ['11', '50'], next call is at: 2021-12-11 11:50:00
-root - INFO - Sucessfully scheduled News data asdf at 11:50
-root - INFO - scheduler queue is: [Event(time=1639223400.0, priority=1, action=<function update_data at 0x10424d5e0>, argument={'11:50': '11:50', 'News data asdf': 'News data asdf'}, kwargs={})]
+root - INFO - Successfuly parsed ['09', '44'], next call is at: 2021-12-11 09:44:00
+root - INFO - Sucessfully scheduled News data asdf at 09:44
+root - INFO - scheduler queue is: [Event(time=1639215840.0, priority=1, action=<function update_data at 0x1067e44c0>, argument={'09:44': '09:44', 'News data asdf': 'News data asdf'}, kwargs={})]
 root - INFO - Scheduled a new news update
 root - INFO - News data scheduler was run with blocking=False
-werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 11:50:46] "GET /index HTTP/1.1" 200 -
-werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 11:50:46] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:44:31] "GET /index HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:44:31] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:44:55] "GET /index?update_item=News+data+asdf HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:44:55] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+root - INFO - Successfuly parsed ['09', '46'], next call is at: 2021-12-10 09:46:00
+root - INFO - Sucessfully scheduled Covid data asdf at 09:46
+root - INFO - scheduler queue is: [Event(time=1639129560.0, priority=1, action=<function update_data at 0x107125dc0>, argument={'09:46': '09:46', 'Covid data asdf': 'Covid data asdf'}, kwargs={})]
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:45:08] "GET /index?alarm=09%3A46&two=asdf&covid-data=covid-data HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:45:08] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+root - WARNING - Scheduler failed to cancel update Event(time=1639129440.0, priority=1, action=<function update_data at 0x107125dc0>, argument={'09:44': '09:44', 'Covid data asdf': 'Covid data asdf'}, kwargs={}), (this could be                    because it's already been cancelled!)
+root - WARNING - Covid scheduler queue is: [Event(time=1639129560.0, priority=1, action=<function update_data at 0x107125dc0>, argument={'09:46': '09:46', 'Covid data asdf': 'Covid data asdf'}, kwargs={})]
+root - INFO - Removed Covid update, scheduler queue is: []
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:45:10] "GET /index?update_item=Covid+data+asdf HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:45:10] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
+root - INFO - Covid data scheduler was run with blocking=False
+root - INFO - News data scheduler was run with blocking=False
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:46:10] "GET /index HTTP/1.1" 200 -
+werkzeug - INFO - 127.0.0.1 - - [10/Dec/2021 09:46:10] "[36mGET /static/images/booty-rub-smiling.gif HTTP/1.1[0m" 304 -
