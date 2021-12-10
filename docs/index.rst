@@ -10,7 +10,9 @@ Welcome to ECM1400-Covid-Dashboard's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   modules
+   covid_data_handler
+   covid_news_handling
+   widget_interface
 
 Indices and tables
 ==================
