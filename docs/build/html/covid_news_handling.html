@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>covid_news_handling module &mdash; ECM1400-Covid-Dashboard 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> ECM1400-Covid-Dashboard
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">covid_news_handling module</a></li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ECM1400-Covid-Dashboard</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>covid_news_handling module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/covid_news_handling.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-covid_news_handling">
+<span id="covid-news-handling-module"></span><h1>covid_news_handling module<a class="headerlink" href="#module-covid_news_handling" title="Permalink to this headline">¶</a></h1>
+<p>Handles news schedulers and API calls</p>
+<dl class="function">
+<dt id="covid_news_handling.calculate_interval">
+<code class="descclassname">covid_news_handling.</code><code class="descname">calculate_interval</code><span class="sig-paren">(</span><em>update_interval: str = '00:00'</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#covid_news_handling.calculate_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a timestamp for when to schedule covid updates.</p>
+<p>Generates a unixtime timestamp from an Hours:Minutes string,
+which is parsed into unix time that can then be used to schedule
+the update. If the given time has already passed, we set the
+update to happen the next time that time happes [i.e. tomorrow]</p>
+<p>update-interval – the time at which the update should run,
+expected in the format %H:%M [parsed into usable data]</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_news_handling.news_API_request">
+<code class="descclassname">covid_news_handling.</code><code class="descname">news_API_request</code><span class="sig-paren">(</span><em>covid_terms: str = 'Covid COVID-19 coronavirus'</em><span class="sig-paren">)</span> &#x2192; dict<a class="headerlink" href="#covid_news_handling.news_API_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request news database from the news API.</p>
+<p>Keyword arguments:
+covid_terms – search terms using when fetching from the news API</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_news_handling.remove_update">
+<code class="descclassname">covid_news_handling.</code><code class="descname">remove_update</code><span class="sig-paren">(</span><em>title: str</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_news_handling.remove_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an update from the scheduler queue.</p>
+<p>Keyword arguments:
+title – the name of the update which to remove,
+corresponding to update_name</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_news_handling.run_updates">
+<code class="descclassname">covid_news_handling.</code><code class="descname">run_updates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covid_news_handling.run_updates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the scheduler, called from the widget_interface every 60s.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_news_handling.schedule_news_updates">
+<code class="descclassname">covid_news_handling.</code><code class="descname">schedule_news_updates</code><span class="sig-paren">(</span><em>update_interval: str</em>, <em>update_name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_news_handling.schedule_news_updates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Schedule a news update using the sched module.</p>
+<p>Keyword arguments:
+update-interval – the time at which the update should run,
+expected in the format %H:%M [parsed into usable data]
+update-name – a unique identifier for the update,
+derived from the widget title</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_news_handling.sort_by_date">
+<code class="descclassname">covid_news_handling.</code><code class="descname">sort_by_date</code><span class="sig-paren">(</span><em>entry</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_news_handling.sort_by_date" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the entry of key ‘year’ for use in sorting</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_news_handling.update_data">
+<code class="descclassname">covid_news_handling.</code><code class="descname">update_data</code><span class="sig-paren">(</span><em>update_interval: str</em>, <em>update_name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_news_handling.update_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update data after an update has run.</p>
+<p>Allows for rescheduling updates and calling an API request on
+completion of a scheduled update. Checks to see if the update_name
+contains the word “daily” [assigned for repeating updates] and if
+so repeats it, if not removes the widget</p>
+<p>Keyword arguments:
+update-interval – the time at which the update should run,
+expected in the format %H:%M
+update-name – a unique identifier for the update, typically
+derived from the widget title</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_news_handling.update_news">
+<code class="descclassname">covid_news_handling.</code><code class="descname">update_news</code><span class="sig-paren">(</span><em>covid_terms: str = 'Covid COVID-19 coronavirus'</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_news_handling.update_news" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the news list.</p>
+<p>Called from widget_interface.py and update_data, updates all_news,
+and then sorts it to make sure blacklisted and already existing
+news elements don’t get spawned. Sorts the news based on the
+date of publishing, with newest dates coming first in the list
+(on top of the widget stack)</p>
+<p>Keyword arguments:
+covid_terms – string of terms, separated by a space which are
+used by the news_API to search for connected articles</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Lukas Kelemen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
