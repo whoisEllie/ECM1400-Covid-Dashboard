@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>covid_data_handler module &mdash; ECM1400-Covid-Dashboard 1.0.0 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="covid_news_handling module" href="covid_news_handling.html" />
+    <link rel="prev" title="ECM1400-Covid-Dashboard" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> ECM1400-Covid-Dashboard
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">ECM1400-Covid-Dashboard</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">covid_data_handler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="covid_news_handling.html">covid_news_handling module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="main.html">main module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_covid_data_handler.html">test_covid_data_handler module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="test_news_data_handling.html">test_news_data_handling module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="widget_interface.html">widget_interface module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ECM1400-Covid-Dashboard</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="modules.html">ECM1400-Covid-Dashboard</a> &raquo;</li>
+      <li>covid_data_handler module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/covid_data_handler.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="module-covid_data_handler">
+<span id="covid-data-handler-module"></span><h1>covid_data_handler module<a class="headerlink" href="#module-covid_data_handler" title="Permalink to this headline">¶</a></h1>
+<p>Handles covid schedulers and API calls</p>
+<dl class="function">
+<dt id="covid_data_handler.calculate_interval">
+<code class="descclassname">covid_data_handler.</code><code class="descname">calculate_interval</code><span class="sig-paren">(</span><em>update_interval: str = '00:00'</em><span class="sig-paren">)</span> &#x2192; str<a class="headerlink" href="#covid_data_handler.calculate_interval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate a timestamp for when to schedule covid updates.</p>
+<p>Generates a unixtime timestamp from an Hours:Minutes string,
+which is parsed into unix time that can then be used to schedule
+the update. If the given time has already passed, we set the update
+to happen the next time that time happes [i.e. tomorrow]</p>
+<p>update-interval – the time at which the update should run,
+expected in the format %H:%M [parsed into usable data]</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.covid_API_request">
+<code class="descclassname">covid_data_handler.</code><code class="descname">covid_API_request</code><span class="sig-paren">(</span><em>location: str = 'England'</em>, <em>location_type: str = 'nation'</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_data_handler.covid_API_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>Request data from the British Government’s covid API.</p>
+<p>Sends a covid-API request, returns this
+data as a csv file, which keeps track of this data, and allow it to
+then be unpacked by parse_csv_data</p>
+<p>Keyword arguments:
+national_location – the location to use for national covid data
+requests (set to England by default)
+national_location_type – the location type that corresponds with
+national_location, as defined by the covid-API
+(set to nation by default)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.dict_to_csv">
+<code class="descclassname">covid_data_handler.</code><code class="descname">dict_to_csv</code><span class="sig-paren">(</span><em>input_dictionary</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_data_handler.dict_to_csv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a dictionary into a csv-type 2d list</p>
+<p>A function that converts the key values of a dictionary into rows
+of a csv file, in order to function properly with the already
+existing process_csv_data, which remains in order for
+test_covid_csv_data to pass. This is necessary as covid_API_request
+must return a dictionary according to test_covid_API_request</p>
+<p>Keyword arguments:
+input_dictionary – the dictionary to be converted into a csv</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.find_recent_value">
+<code class="descclassname">covid_data_handler.</code><code class="descname">find_recent_value</code><span class="sig-paren">(</span><em>test_dictionary: list</em>, <em>indexname: str</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#covid_data_handler.find_recent_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the most recent value for a category in a csv dictionary.</p>
+<p>Finds the most recent value in a csv datasheet by iterating through
+until the selected value returns true to an is_integer check.
+Used to make sure the value we are taking is the most recent one
+that is valid.</p>
+<p>Keyword arguments:
+data – the 2d list to iterate through
+valuename – the name of the vale which to iterate through</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.is_integer">
+<code class="descclassname">covid_data_handler.</code><code class="descname">is_integer</code><span class="sig-paren">(</span><em>value: any</em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#covid_data_handler.is_integer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check a value to see if it is an integer.</p>
+<p>Checks to see if a value is
+an integer, returning True if it is. Used to find the most
+recent valid value in find_recent_value.
+Keyword arguments:
+value – any value, checked to see if it is an integer</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.parse_csv_data">
+<code class="descclassname">covid_data_handler.</code><code class="descname">parse_csv_data</code><span class="sig-paren">(</span><em>input_csv: str</em><span class="sig-paren">)</span> &#x2192; list<a class="headerlink" href="#covid_data_handler.parse_csv_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse a csv into a 2d list.</p>
+<p>Parses a csv file into a 2d list, separating rows with a ,</p>
+<p>csv_filename – system path to a csv file containing data to
+be parsed</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.process_covid_csv_data">
+<code class="descclassname">covid_data_handler.</code><code class="descname">process_covid_csv_data</code><span class="sig-paren">(</span><em>data_to_process: Union[list, dict]</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#covid_data_handler.process_covid_csv_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Process covid data into values used by index.html.</p>
+<p>Processes csv data into values usable by
+index.html, exctracting cumulative 7 day values for infections,
+hospital case data, and cumulative death data through the use of
+above-defined functions such as sum_recent_values</p>
+<p>Keyword arguments:
+data_to_process – a 2d list or dictionary containing the data
+about national covid cases. In the case of a dictionary, it is
+converted into a csv file as this function’s existence is
+necessitated through a test function</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.reformat_data">
+<code class="descclassname">covid_data_handler.</code><code class="descname">reformat_data</code><span class="sig-paren">(</span><em>input_dict</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_data_handler.reformat_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reformat dictionary into a more usable style.</p>
+<p>Reformats an input dictionary into a more usable, iterable
+style, as is expected by future functions and for readability</p>
+<p>Keyword arguments:
+input_dict – the dictionary to reformat</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.remove_update">
+<code class="descclassname">covid_data_handler.</code><code class="descname">remove_update</code><span class="sig-paren">(</span><em>title: str</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_data_handler.remove_update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove an update from the scheduler queue.</p>
+<p>Keyword arguments:
+title – the name of the update which to remove,
+corresponding to update_name</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.run_updates">
+<code class="descclassname">covid_data_handler.</code><code class="descname">run_updates</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#covid_data_handler.run_updates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the scheduler, called from the widget_interface every 60s.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.schedule_covid_updates">
+<code class="descclassname">covid_data_handler.</code><code class="descname">schedule_covid_updates</code><span class="sig-paren">(</span><em>update_interval: str</em>, <em>update_name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_data_handler.schedule_covid_updates" title="Permalink to this definition">¶</a></dt>
+<dd><p>Schedule a covid update using the sched module.</p>
+<p>Keyword arguments:
+update-interval – the time at which the update should run,
+expected in the format %H:%M [parsed into usable data]
+update-name – a unique identifier for the update, derived from the widget title</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.sum_recent_values">
+<code class="descclassname">covid_data_handler.</code><code class="descname">sum_recent_values</code><span class="sig-paren">(</span><em>data: list</em>, <em>indexname: str</em>, <em>number: int = 7</em><span class="sig-paren">)</span> &#x2192; int<a class="headerlink" href="#covid_data_handler.sum_recent_values" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the sum of a set number of the most recent values.</p>
+<p>Sums the most recent values of a category in order to obtain an
+‘X-day’ summation. Only counts up with integer values thanks to
+the is_integer test</p>
+<p>Keyword arguments:
+data – the 2d list to iterate through
+indexname – the name of the index which to iterate through 
+number – the amount of iterations to calculate
+(set to 7 [one week] by default)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="covid_data_handler.update_data">
+<code class="descclassname">covid_data_handler.</code><code class="descname">update_data</code><span class="sig-paren">(</span><em>update_interval: str</em>, <em>update_name: str</em><span class="sig-paren">)</span><a class="headerlink" href="#covid_data_handler.update_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update data after an update has run.</p>
+<p>Allows for rescheduling updates and calling an API request on
+completion of a scheduled update. Checks to see if the update_name
+contains the word “daily” [assigned for repeating updates] and if
+so repeats it, if not removes the widget</p>
+<p>Keyword arguments:
+update-interval – the time at which the update should run,
+expected in the format %H:%M
+update-name – a unique identifier for the update, typically
+derived from the widget title</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="ECM1400-Covid-Dashboard" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="covid_news_handling.html" class="btn btn-neutral float-right" title="covid_news_handling module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Lukas Kelemen.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

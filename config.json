@@ -1,0 +1,17 @@
+{
+    "apiKey": "Your_API_Key_Here",
+    "title": "Covid Dashboard",
+    "image_path": "booty-rub-smiling.gif",
+    "national_location": "England",
+    "national_location_type": "nation",
+    "local_location": "Exeter",
+    "local_location_type": "ltla",
+    "max_articles": 4,
+    "search_terms": "Covid COVID-19 coronavirus",
+    "blacklisted_strings": [" - Reuters.com", " - Reuters"],
+    "news_language": "en",
+    "news_api_url": "https://newsapi.org/v2/everything",
+    "news_api_sortBy": "relevancy",
+    "specify_sources": true,
+    "sources": "bbc-news,the-verge"
+}
